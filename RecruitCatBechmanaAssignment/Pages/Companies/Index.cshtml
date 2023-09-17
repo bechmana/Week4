@@ -1,0 +1,84 @@
+﻿@page
+@model RecruitCatBechmanaAssignment.Pages.Companies.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Companies</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].PostionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].MinSalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].MaxSalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].OptStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].PositionFilled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company[0].IndAssociated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Company) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OptStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionFilled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IndAssociated.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CompanyId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CompanyId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CompanyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

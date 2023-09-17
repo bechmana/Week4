@@ -1,0 +1,134 @@
+﻿@page
+@model RecruitCatBechmanaAssignment.Pages.Companies.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Company Details</h1>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.PostionName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.PostionName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MinSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MinSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MaxSalary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.MaxSalary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.OptStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.OptStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.PositionFilled)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.PositionFilled)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.IndAssociated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.IndAssociated.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Company?.CompanyId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@if (Model.Company.Candidates.Any())
+{
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company.Candidates[0].FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company.Candidates[0].LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company.Candidates[0].PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company.Candidates[0].DateOfBirth)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Company.Candidates)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td>
+                            <a asp-page="./BankAccount/Details" asp-route-id="@item.CandidateId">Details</a> |
+                        </td>
+                    </tr>
+                }
+                <tr>
+            </tbody>
+        </table>
+        <strong>@Model.Company.Candidates.Count Accounts Found</strong>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        No Candadites Exist for this Company.
+    </div>
+}

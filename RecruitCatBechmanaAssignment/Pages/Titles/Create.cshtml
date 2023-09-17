@@ -1,0 +1,49 @@
+﻿@page
+@model RecruitCatBechmanaAssignment.Pages.Titles.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new Title</h1>
+
+<h4>Title</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title.Name" class="control-label"></label>
+                <input asp-for="Title.Name" class="form-control" />
+                <span asp-validation-for="Title.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title.MinSalary" class="control-label"></label>
+                <input asp-for="Title.MinSalary" class="form-control" />
+                <span asp-validation-for="Title.MinSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title.MaxSalary" class="control-label"></label>
+                <input asp-for="Title.MaxSalary" class="form-control" />
+                <span asp-validation-for="Title.MaxSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title.MedianSalary" class="control-label"></label>
+                <input asp-for="Title.MedianSalary" class="form-control" />
+                <span asp-validation-for="Title.MedianSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
